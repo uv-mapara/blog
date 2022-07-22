@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+  {% load static %}
+
+  <title>Content</title>
+  <link rel="stylesheet" herf="{% static 'css/home.css' %}">
+  
+{% endblock title %}
+
+{% block content%}
+{% load static %}
+
+<div class="container mt-5 mb-5">
+  <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <img src="{{i.images.url}}" width="550" height:"300" class="img-fluid">
+      </div>
+      <div class="col-md-8  col-sm-12 col-xs-12">
+        <h5 class="mt-0 content text-justify">{{i.content}}</h5>         
+      </div>                                                                                    
+   </div>
+</div>
+
+{% endblock content%}
