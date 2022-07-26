@@ -7,7 +7,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">        
         {% block title %}
 
-        {% endblock title %}          
+        {% endblock title %}  
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>        
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -49,10 +50,10 @@
               </label>
               <label class="Logo">Uvesh</label>
               <ul class="">
-                  <li><a href="{% url 'home' %}">Home</a></li>
-                  <li><a href="{% url 'about' %}">About</a></li>
-                  <li><a href="{% url 'contact' %}">Contact</a></li>
-                  <li><a href="#">Support</a></li>
+                  <li><a href="{% url 'home' %}" class="home active">Home</a></li>
+                  <li><a href="{% url 'about' %}" class="about">About</a></li>
+                  <li><a href="{% url 'contact' %}" class="contact ">Contact</a></li>
+                  <li><a href="#" class="support ">Support</a></li>
               </ul>
           </div>        
       </nav>
@@ -65,9 +66,65 @@
           {% endblock content %}
            
           
-          <footer>
-            
-          </footer>        
+         <footer class="footer">
+           <div class="footer-inner">
+             <div class="footer-items">
+               <h2>Address</h2>
+               <div class="footerheadingborder" ></div>              
+               <address>
+                3/67 Quaters,<br>
+                Opp.Ganjh shahid Danilimda<br>
+                Ahmedabad,Gujarat-380028
+               </address>
+             </div>
+             <div class="footer-items">
+              <h2>Quick Links</h2>
+              <div class="footerheadingborder" ></div>              
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Support</a></li>
+              </ul>
+            </div>
+            <div class="footer-items">
+              <h2>Language</h2>
+              <div class="footerheadingborder" ></div>              
+              <ul>
+                <li><a href="#">Gujarati</a></li>
+                <li><a href="#">English</a></li>
+                <li><a href="#">Hindi</a></li>
+                <li><a href="#">Chinese</a></li>
+              </ul>
+            </div>
+            <div class="footer-items">
+                <h2>Contact us</h2>
+                <div class="footerheadingborder" ></div>              
+                <ul>
+                  <li><i class="fa fa-map-marker"></i>Xyz,Abc</li>
+                  <li><i class="fa fa-phone"></i>+919054056443</li>
+                  <li><i class="fa fa-envelope"></i>maparauvesh@gmail.com</li>                
+                </ul>              
+              </div>
+            </div>
+            <div class="footer-link">
+              <div class="wrap">
+                <div class="btn">
+                  <div class="icon"><i class="fa fa-facebook-f"></i></div>
+                  <span>Facebook</span>
+                </div>
+                <div class="btn">
+                  <div class="icon"><i class="fa fa-instagram"></i></div>
+                  <span>Instagram</span>
+                </div>
+                <div class="btn">
+                  <div class="icon"><i class="fa fa-twitter"></i></div>
+                  <span>Twitter</span>
+                </div>                
+              </div>
+            </div>
+           </div>
+         </footer>        
 
           <script src="{% static 'js/jquery-slim.min.js' %}"></script>
           <script src="{% static 'js/popper.min.js' %}"></script>
