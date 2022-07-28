@@ -24,7 +24,6 @@ def contact(request):
         obj.firstname= request.POST['firstname']
         obj.lastname= request.POST['lastname']
         obj.email= request.POST['email']
-        obj.message= request.POST['message']  
-        obj.save()
-        messages.success(request, 'Data Has Been Sent.')                                
+        obj.message= request.POST['message'] 
+        obj.save()                               
     return render(request,'contact.html')

@@ -1,18 +1,3 @@
-/*START - SHOW & HIDE ALL TYPES OF MESSAGES*/
-function ShowMessage(DivId, MsgType, MsgHeading, MsgText, MsgTimeout) {
-    //alert(DivId + ',' + MsgType + ',' + MsgHeading + ',' + MsgText + ',' + MsgTimeout);
-    $("#" + DivId).show();
-    $("#" + DivId).addClass(MsgType);
-    $("#SpnMsgHeader").text(MsgHeading);
-    $("#SpnErrorMsg").html(MsgText);
-    if (MsgTimeout == 0) {
-        $("#" + DivId).show();
-    }
-    else {
-        $("#" + DivId).fadeOut(MsgTimeout);
-    }
-}
-
 /*START - SAVE DATA OPERATIONS*/
 $("#btnSubmit").click(function () {
     SaveData();
@@ -25,7 +10,7 @@ function SaveData() {
         ErrMsg += '<br/>-- First Name.';
     }   
     if ($("#lastname").val().trim() == '') {
-        ErrMsg += '<br/>-- Lirst Name.';
+        ErrMsg += '<br/>-- Last Name.';
     }  
     if ($("#email").val().trim() == '') {
         ErrMsg += '<br/>-- Email.';
@@ -39,30 +24,52 @@ function SaveData() {
     }
 
     else{      
-        
-        $( "form" ).on( "submit", function(e) {
- 
-            var dataString = $(this).serialize();
-             
-            // alert(dataString); return false;
-         
+        $.blockUI();
             $.ajax({
-              type: "POST",
-              url: '{% url "contact" }',
-              data: dataString,
-              success: function () {
-                alert("Save")
-              }
-            });
-         
-            e.preventDefault();
-          });
+              url: 'contact',
+              type:'POST',
+              data: {
+                  firstname:$('#firstname').val(),
+                  lastname:$('#lastname').val(),
+                  email:$('#email').val(),
+                  message:$('#message').val(),
+                  csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                },
+              success: function (data) {
+                setTimeout($.unblockUI, 2000);
+                HideToastrMsg();
+                ShowToastrMsg("success", "toast-top-full-width", "Sent SuccessFully.", "", 15000);
+                HideMessage("DivDisplayMsg");                                              
+              },
+            });       
         
     }
     
    
 }
 /*END - SAVE DATA OPERATIONS*/
+
+/*START - Reset DATA OPERATIONS*/
+
+$('#btnReset').click(function(){
+    cleardata();
+})
+
+function cleardata(){
+    $("#firstname").val('');
+    $("#lastname").val('');
+    $("#email").val('');
+    $("#message").val('');
+    HideMessage('DivDisplayMsg');
+}
+
+/*END - SAVE DATA OPERATIONS*/
+
+$('.close').click(function(){
+    HideMessage('DivDisplayMsg');
+})
+
+
 
 
   

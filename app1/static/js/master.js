@@ -29,3 +29,55 @@ $(document).ready(function(){
        
            
  });
+
+ 
+/*START - SHOW & HIDE ALL TYPES OF MESSAGES*/
+function ShowMessage(DivId, MsgType, MsgHeading, MsgText, MsgTimeout) {
+    //alert(DivId + ',' + MsgType + ',' + MsgHeading + ',' + MsgText + ',' + MsgTimeout);
+    $("#" + DivId).show();
+    $("#" + DivId).addClass(MsgType);
+    $("#SpnMsgHeader").text(MsgHeading);
+    $("#SpnErrorMsg").html(MsgText);
+    if (MsgTimeout == 0) {
+        $("#" + DivId).show();
+    }
+    else {
+        $("#" + DivId).fadeOut(MsgTimeout);
+    }
+}
+
+function HideMessage(DivId) {
+    //alert(DivId);
+    $("#" + DivId).hide();
+    $("#" + DivId).removeClass();
+}
+/*END - SHOW & HIDE ALL TYPES OF MESSAGES*/
+
+/*START - SHOW & HIDE ALL TYPES OF TOASTER MESSAGES*/
+function ShowToastrMsg(MsgType, MsgPosition, MsgText, MsgTimeOut) {
+    toastr.options =
+    {
+        "closeButton": true,
+        "debug": false,
+        "positionClass": MsgPosition,
+        "onclick": null,
+        "showDuration": "15000",
+        "showEasing": "linear",
+        "showMethod": "show",
+        "timeOut": MsgTimeOut
+    }
+    if (MsgType == 'Success') {
+        toastr.success(MsgText, 'Success');
+    } else if (MsgType == 'Error') {
+        toastr.error(MsgText, 'Error');
+    } else if (MsgType == 'Warning') {
+        toastr.warning(MsgText, 'Warning');
+    } else {
+        toastr.info(MsgText, 'Information');
+    }
+}
+
+function HideToastrMsg() {
+    toastr.clear();
+}
+/*END - SHOW & HIDE ALL TYPES OF TOASTER MESSAGES*/
